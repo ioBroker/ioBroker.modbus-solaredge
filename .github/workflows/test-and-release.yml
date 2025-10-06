@@ -58,8 +58,8 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Build backend
-        run: npm run build-backend
+      - name: Build
+        run: npm run build
 
       - name: Run local tests
         run: npm test

@@ -49,6 +49,7 @@
     "LICENSE"
   ],
   "scripts": {
+    "prepublishOnly": "npm run build",
     "test": "mocha test/testPackageFiles.js --exit",
     "release": "release-script",
     "lint": "eslint -c eslint.config.mjs",
