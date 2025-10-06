@@ -1,13 +1,13 @@
-![Logo](admin/modbus.png)
-# iobroker.modbus
+![Logo](admin/modbus-solaredge.png)
+# iobroker.modbus-solaredge
 
-![Number of Installations](http://iobroker.live/badges/modbus-installed.svg)
-![Number of Installations](http://iobroker.live/badges/modbus-stable.svg)
-[![NPM version](http://img.shields.io/npm/v/iobroker.modbus.svg)](https://www.npmjs.com/package/iobroker.modbus)
+![Number of Installations](http://iobroker.live/badges/modbus-solaredge-installed.svg)
+![Number of Installations](http://iobroker.live/badges/modbus-solaredge-stable.svg)
+[![NPM version](http://img.shields.io/npm/v/iobroker.modbus-solaredge.svg)](https://www.npmjs.com/package/iobroker.modbus-solaredge)
 
-![Test and Release](https://github.com/ioBroker/iobroker.modbus/workflows/Test%20and%20Release/badge.svg)
-[![Translation status](https://weblate.iobroker.net/widgets/adapters/-/modbus/svg-badge.svg)](https://weblate.iobroker.net/engage/adapters/?utm_source=widget)
-[![Downloads](https://img.shields.io/npm/dm/iobroker.modbus.svg)](https://www.npmjs.com/package/iobroker.modbus)
+![Test and Release](https://github.com/ioBroker/iobroker.modbus-solaredge/workflows/Test%20and%20Release/badge.svg)
+[![Translation status](https://weblate.iobroker.net/widgets/adapters/-/modbus-solaredge/svg-badge.svg)](https://weblate.iobroker.net/engage/adapters/?utm_source=widget)
+[![Downloads](https://img.shields.io/npm/dm/iobroker.modbus-solaredge.svg)](https://www.npmjs.com/package/iobroker.modbus-solaredge)
 
 <!--
 	### **WORK IN PROGRESS**
