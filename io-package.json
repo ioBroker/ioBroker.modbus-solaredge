@@ -1,0 +1,94 @@
+{
+    "common": {
+        "name": "modbus-solaredge",
+        "version": "0.0.1",
+        "news": {},
+        "titleLang": {
+            "en": "Modbus-SolarEdge",
+            "de": "ModBus-SolarEdge",
+            "ru": "ModBus-SolarEdge",
+            "pt": "ModBus-SolarEdge",
+            "nl": "ModBus-SolarEdge",
+            "fr": "ModBus-SolarEdge",
+            "it": "ModBus-SolarEdge",
+            "es": "ModBus-SolarEdge",
+            "pl": "ModBus-SolarEdge",
+            "uk": "ModBus-SolarEdge",
+            "zh-cn": "ModBus-SolarEdge"
+        },
+        "desc": {
+            "en": "Communication with SolarEdge via Modbus",
+            "de": "Kommunikation mit SolarEdge über Modbus",
+            "ru": "Связь с SolarEdge через Modbus",
+            "pt": "Comunicação com SolarEdge via Modbus",
+            "nl": "Communicatie met SolarEdge via Modbus",
+            "fr": "Communication avec SolarEdge via Modbus",
+            "it": "Comunicazione con SolarEdge tramite Modbus",
+            "es": "Comunicación con SolarEdge a través de Modbus",
+            "pl": "Komunikacja z SolarEdge przez Modbus",
+            "uk": "Зв'язок із SolarEdge через Modbus",
+            "zh-cn": "通过 Modbus 与 SolarEdge 通信"
+        },
+        "authors": ["bluefox <dogafox@gmail.com>"],
+        "licenseInformation": {
+            "license": "MIT",
+            "type": "free"
+        },
+        "platform": "Javascript/Node.js",
+        "mode": "daemon",
+        "loglevel": "info",
+        "messagebox": true,
+        "icon": "modbus-solaredge.png",
+        "keywords": ["ModBus", "solaredge"],
+        "enabled": true,
+        "extIcon": "https://raw.githubusercontent.com/ioBroker/ioBroker.modbus-solaredge/master/admin/modbus-solaredge.png",
+        "readme": "https://github.com/ioBroker/ioBroker.modbus-solaredge/blob/master/README.md",
+        "type": "protocols",
+        "compact": true,
+        "connectionType": "local",
+        "dataSource": "poll",
+        "tier": 2,
+        "adminUI": {
+            "config": "json"
+        },
+        "dependencies": [
+            {
+                "js-controller": ">=6.0.11"
+            }
+        ],
+        "globalDependencies": [
+            {
+                "admin": ">=7.1.28"
+            }
+        ]
+    },
+    "native": {
+        "params": {
+            "bind": "127.0.0.1",
+            "port": 502
+        }
+    },
+    "instanceObjects": [
+        {
+            "_id": "info",
+            "type": "channel",
+            "common": {
+                "name": "Information"
+            },
+            "native": {}
+        },
+        {
+            "_id": "info.connection",
+            "type": "state",
+            "common": {
+                "role": "indicator.connected",
+                "name": "If master connected",
+                "type": "boolean",
+                "read": true,
+                "write": false,
+                "def": false
+            },
+            "native": {}
+        }
+    ]
+}

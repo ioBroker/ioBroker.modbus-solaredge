@@ -1,0 +1,16 @@
+/.idea
+/node_modules
+.git
+admin/i18n/flat.txt
+admin/i18n/*/flat.txt
+test/Ananas64.exe
+iob_npm.done
+tmp
+/src-admin/node_modules
+/src-admin/.eslintcache
+.DS_Store
+/src-admin/build
+/test/*.log
+/test/RMMS.exe
+*.tgz
+/build
