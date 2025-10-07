@@ -10,6 +10,10 @@
 [![Translation status](https://weblate.iobroker.net/widgets/adapters/-/modbus-solaredge/svg-badge.svg)](https://weblate.iobroker.net/engage/adapters/?utm_source=widget)
 [![Downloads](https://img.shields.io/npm/dm/iobroker.modbus-solaredge.svg)](https://www.npmjs.com/package/iobroker.modbus-solaredge)
 
+This adapter reads data from a SolarEdge inverter via Modbus TCP.
+
+It uses [@iobroker/modbus](https://github.com/ioBroker/modbus) library to read the data.
+
 <!--
 	### **WORK IN PROGRESS**
 -->
