@@ -49,6 +49,18 @@ function start(port = 502) {
         }
     });
 
+    netServer.on('connection', (socket) => {
+        console.log('New connection from', socket.remoteAddress, 'Port', socket.remotePort);
+
+        socket.on('error', (err) => {
+            if (err.code === 'ECONNRESET') {
+                console.warn('ECONNRESET on Socket:', err.message);
+            } else {
+                console.error('Socket-error:', err);
+            }
+        });
+    });
+
     netServer.listen(port, '0.0.0.0', () => {
         console.log(`Modbus TCP server listening on port ${port}`);
     });
@@ -59,14 +71,12 @@ function start(port = 502) {
 }
 
 function stop() {
-    if (modbusServer) {
-        modbusServer.close(() => {
-            if (netServer) {
-                netServer.close();
-            }
+    try {
+        netServer?.close(() => {
+            console.log('Server wurde geschlossen.');
         });
-    } else if (netServer) {
-        netServer.close();
+    } catch (e) {
+        console.error('Cannot close server', e);
     }
 }
 if (require.main === module) {

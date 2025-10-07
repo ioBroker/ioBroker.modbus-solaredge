@@ -131,10 +131,10 @@ describe(`Test ${adapterShortName} adapter`, function () {
     after(`Test ${adapterShortName} adapter: Stop js-controller`, function (done) {
         this.timeout(10000);
 
-        // Stop Modbus server
-        stop();
-
         setup.stopController(normalTerminated => {
+            // Stop Modbus server
+            stop();
+
             console.log(`Adapter normal terminated: ${normalTerminated}`);
             done();
         });
