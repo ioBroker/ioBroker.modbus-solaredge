@@ -1,11 +1,18 @@
 import ModbusTemplate, { tsv2registers } from '@iobroker/modbus';
 import type { AdapterOptions } from '@iobroker/adapter-core';
+import { readFileSync } from 'node:fs';
+const adapterName = JSON.parse(readFileSync(`${__dirname}/../io-package.json`, 'utf8')).common.name;
 
 export class ModbusAdapter extends ModbusTemplate {
     public constructor(options: Partial<AdapterOptions> = {}) {
-        const holdingRegs = tsv2registers('holdingRegs', `${__dirname}/../data/holdingRegs.tsv`);
+        const holdingRegs = tsv2registers('holdingRegs', `${__dirname}/../data/holding-registers.tsv`);
 
-        super('modbus-solaredge', options, undefined, { holdingRegs });
+        super(adapterName, options, {
+            // Do not show addresses in the object IDs
+            doNotIncludeAdrInId: true,
+            // Remove the leading "_" in the names
+            removeUnderscorePrefix: true,
+        }, { holdingRegs });
     }
 }
 

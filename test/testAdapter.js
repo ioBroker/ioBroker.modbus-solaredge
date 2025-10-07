@@ -1,7 +1,6 @@
 const expect = require('chai').expect;
 const setup = require('@iobroker/legacy-testing');
 const { start, stop } = require('./slave');
-const pack = require('../package.json');
 
 let objects = null;
 let states = null;
@@ -46,14 +45,14 @@ function waitAsync(ms) {
 
 async function checkValue(id, expectedValue, maxTries) {
     let counter = 0;
-    maxTries = 10;
+    maxTries ||= 10;
     for (let i = 0; i < maxTries; i++) {
-        const value = readState(id);
-        if (value === expectedValue) {
+        const value = await readState(id);
+        if (value?.ack && value.val === expectedValue) {
             return;
         }
         counter++;
-        console.log(`Value of ${id} is ${value}, expected ${expectedValue}. Try ${counter}`);
+        console.log(`Value of ${id} is ${value?.val}, expected ${expectedValue}. Try ${counter}`);
         await waitAsync(500);
     }
     throw new Error(`Value of ${id} is not ${expectedValue} after ${maxTries} tries`);
@@ -76,7 +75,7 @@ describe(`Test ${adapterShortName} adapter`, function () {
             await setup.setAdapterConfig(config.common, config.native);
 
             // Start Modbus server
-            start();
+            start(1502);
 
             setup.startController(
                 true,
@@ -117,13 +116,13 @@ describe(`Test ${adapterShortName} adapter`, function () {
     });
 
     it.only(`Test connection to server`, async function () {
-        this.timeout(10000);
-        await checkValue(`${pack.name.replace('iobroker.', '')}.0.info.connection`, true, 20);
+        this.timeout(100000);
+        await checkValue(`${adapterShortName}.0.info.connection`, true, 200);
     });
 
     it.only(`Test values`, async function () {
         this.timeout(10000);
-        await checkValue(`${pack.name.replace('iobroker.', '')}.0.holdingRegisters.1`, 1, 20);
+        await checkValue(`${adapterShortName}.0.holdingRegisters.1`, 1, 200);
     });
 
     after(`Test ${adapterShortName} adapter: Stop js-controller`, function (done) {

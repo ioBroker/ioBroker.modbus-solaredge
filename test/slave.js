@@ -1,12 +1,12 @@
 const { server } = require('jsmodbus');
 const { Server } = require('node:net');
-const { tsv2registers } = require('@iobroker/modbus');
+const tsv2registers = require('@iobroker/modbus/build/convert');
 
-const registers = tsv2registers('holdingRegs', `${__dirname}/../data/holding-registers.tsv`);
+const registers = tsv2registers.default('holdingRegs', `${__dirname}/../data/holding-registers.tsv`);
 let netServer;
 let modbusServer;
 
-function start() {
+function start(port = 502) {
     netServer = new Server();
     modbusServer = new server.TCP(netServer);
 
@@ -25,7 +25,9 @@ function start() {
         }
     });
 
-    netServer.listen(1502);
+    netServer.listen(port, '0.0.0.0', () => {
+        console.log(`Modbus TCP server listening on port ${port}`);
+    });
 }
 
 function stop() {
