@@ -8,7 +8,7 @@ _address	name	description	unit	type	len	factor	offset	formula	role	room	poll	wp	
 40053	SerialNumber	C_SerialNumber		string	16	1	0		state		true	false	false	false
 40069	DeviceAddress	C_DeviceAddress		uint16be	1	1	0		state		true	false	false	false
 40070	PhaseTypes	C_SunSpec_DID		uint16be	1	1	0		state		true	false	false	false
-40071	SunSpecLength	C_SunSpec_Length		uint16be	1	1	0		state		true	false	false	false
+40071	SunSpecLength2	C_SunSpec_Length		uint16be	1	1	0		state		true	false	false	false
 40072	CurrentTotal	I_AC_Current	A	uint16be	1	1	0	x * Math.pow(10, sf['40076'])	value		true	false	false	false
 40073	CurrentL1	I_AC_CurrentA	A	uint16be	1	1	0	x * Math.pow(10, sf['40076'])	value		true	false	false	false
 40074	CurrentL2	I_AC_CurrentB	A	uint16be	1	1	0	x * Math.pow(10, sf['40076'])	value		true	false	false	false

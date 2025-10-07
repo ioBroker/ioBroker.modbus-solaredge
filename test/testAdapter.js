@@ -5,6 +5,7 @@ const { start, stop } = require('./slave');
 let objects = null;
 let states = null;
 let onStateChanged = null;
+let modbusValues = null;
 
 const adapterShortName = setup.adapterName.substring(setup.adapterName.indexOf('.') + 1);
 
@@ -75,7 +76,7 @@ describe(`Test ${adapterShortName} adapter`, function () {
             await setup.setAdapterConfig(config.common, config.native);
 
             // Start Modbus server
-            start(1502);
+            modbusValues = start(1502);
 
             setup.startController(
                 true,
@@ -116,13 +117,15 @@ describe(`Test ${adapterShortName} adapter`, function () {
     });
 
     it.only(`Test connection to server`, async function () {
-        this.timeout(100000);
-        await checkValue(`${adapterShortName}.0.info.connection`, true, 200);
+        this.timeout(10000);
+        await checkValue(`${adapterShortName}.0.info.connection`, true, 10);
     });
 
     it.only(`Test values`, async function () {
         this.timeout(10000);
-        await checkValue(`${adapterShortName}.0.holdingRegisters.1`, 1, 200);
+        await checkValue(`${adapterShortName}.0.data.Frequency`, modbusValues.Frequency * 100, 10);
+        await checkValue(`${adapterShortName}.0.data.CurrentTotal`, modbusValues.CurrentTotal * 100, 10);
+        await checkValue(`${adapterShortName}.0.data.MeterModel`, modbusValues.MeterModel, 10);
     });
 
     after(`Test ${adapterShortName} adapter: Stop js-controller`, function (done) {
