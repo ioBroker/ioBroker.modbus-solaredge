@@ -1,4 +1,5 @@
-![Logo](admin/modbus-solaredge.png)
+<img src="admin/modbus-solaredge.svg" width="64">
+
 # iobroker.modbus-solaredge
 
 ![Number of Installations](http://iobroker.live/badges/modbus-solaredge-installed.svg)
