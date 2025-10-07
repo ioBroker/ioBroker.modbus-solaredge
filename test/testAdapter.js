@@ -70,7 +70,7 @@ describe(`Test ${adapterShortName} adapter`, function () {
             config.common.loglevel = 'debug';
             config.native.params = {
                 port: 1502,
-                bind: 'localhost',
+                host: 'localhost',
             };
 
             await setup.setAdapterConfig(config.common, config.native);

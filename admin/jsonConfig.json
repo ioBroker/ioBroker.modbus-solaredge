@@ -2,7 +2,7 @@
     "i18n": true,
     "type": "panel",
     "items": {
-        "params.bind": {
+        "params.host": {
             "type": "text",
             "label": "IP address",
             "xs": 12,
