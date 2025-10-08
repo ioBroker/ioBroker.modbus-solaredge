@@ -3,7 +3,7 @@ const { readFileSync } = require('node:fs');
 const adapterName = JSON.parse(readFileSync(`${__dirname}/../io-package.json`, 'utf8')).common.name;
 
 class ModbusAdapter extends IoBrokerModbus.default {
-    constructor(options) {
+    constructor(adapterOptions) {
         const holdingRegs = IoBrokerModbus.tsv2registers('holdingRegs', `${__dirname}/../data/holding-registers.tsv`);
         holdingRegs.forEach(holdingReg => {
             holdingReg._address = parseInt(holdingReg._address, 10) - 40001;
@@ -20,7 +20,7 @@ class ModbusAdapter extends IoBrokerModbus.default {
 
         super(
             adapterName,
-            options,
+            adapterOptions,
             {
                 params: {
                     // Do not show addresses in the object IDs

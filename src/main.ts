@@ -4,7 +4,7 @@ import { readFileSync } from 'node:fs';
 const adapterName = JSON.parse(readFileSync(`${__dirname}/../io-package.json`, 'utf8')).common.name;
 
 export class ModbusAdapter extends ModbusTemplate {
-    public constructor(options: Partial<AdapterOptions> = {}) {
+    public constructor(adapterOptions: Partial<AdapterOptions> = {}) {
         const holdingRegs = tsv2registers('holdingRegs', `${__dirname}/../data/holding-registers.tsv`);
         holdingRegs.forEach(holdingReg => {
             holdingReg._address = parseInt(holdingReg._address as string, 10) - 40001;
@@ -19,7 +19,7 @@ export class ModbusAdapter extends ModbusTemplate {
             }
         });
 
-        super(adapterName, options, {
+        super(adapterName, adapterOptions, {
             params: {
                 // Do not show addresses in the object IDs
                 doNotIncludeAdrInId: true,
