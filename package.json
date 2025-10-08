@@ -1,6 +1,6 @@
 {
   "name": "iobroker.modbus-solaredge",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Connect devices oder Modbus protocol to ioBroker",
   "author": {
     "name": "bluefox",
