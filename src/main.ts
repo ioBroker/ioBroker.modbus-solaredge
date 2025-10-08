@@ -19,10 +19,8 @@ export class ModbusAdapter extends ModbusTemplate {
             }
         });
 
-        super(
-            adapterName,
-            options,
-            {
+        super(adapterName, options, {
+            params: {
                 // Do not show addresses in the object IDs
                 doNotIncludeAdrInId: true,
                 // Remove the leading "_" in the names
@@ -32,8 +30,8 @@ export class ModbusAdapter extends ModbusTemplate {
                 // Remove holdingRegister (and so on) from name
                 registerTypeInName: 'data',
             },
-            { holdingRegs },
-        );
+            holdingRegs,
+        });
     }
 }
 

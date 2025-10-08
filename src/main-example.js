@@ -22,16 +22,18 @@ class ModbusAdapter extends IoBrokerModbus.default {
             adapterName,
             options,
             {
-                // Do not show addresses in the object IDs
-                doNotIncludeAdrInId: true,
-                // Remove the leading "_" in the names
-                removeUnderscorePrefix: true,
-                // Do not show aliases, because we don't want to see addresses
-                showAliases: false,
-                // Remove holdingRegister (and so on) from name
-                registerTypeInName: 'data',
+                params: {
+                    // Do not show addresses in the object IDs
+                    doNotIncludeAdrInId: true,
+                    // Remove the leading "_" in the names
+                    removeUnderscorePrefix: true,
+                    // Do not show aliases, because we don't want to see addresses
+                    showAliases: false,
+                    // Remove holdingRegister (and so on) from name
+                    registerTypeInName: 'data',
+                },
+                holdingRegs,
             },
-            { holdingRegs },
         );
     }
 }
