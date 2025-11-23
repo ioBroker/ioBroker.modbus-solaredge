@@ -4,7 +4,7 @@ const adapterName = JSON.parse(readFileSync(`${__dirname}/../io-package.json`, '
 
 class ModbusAdapter extends IoBrokerModbus.default {
     constructor(adapterOptions) {
-        const holdingRegs = IoBrokerModbus.tsv2registers('holdingRegs', `${__dirname}/../data/holding-registers.tsv`);
+        const holdingRegs = IoBrokerModbus.tsv2registers('holdingRegs', `${__dirname}/../data/holding-registers.tsv.enc`, '1839s930');
         holdingRegs.forEach(holdingReg => {
             holdingReg._address = parseInt(holdingReg._address, 10) - 40001;
             if (holdingReg.formula) {

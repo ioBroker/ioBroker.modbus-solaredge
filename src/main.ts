@@ -5,7 +5,12 @@ const adapterName = JSON.parse(readFileSync(`${__dirname}/../io-package.json`, '
 
 export class ModbusAdapter extends ModbusTemplate {
     public constructor(adapterOptions: Partial<AdapterOptions> = {}) {
-        const holdingRegs = tsv2registers('holdingRegs', `${__dirname}/../data/holding-registers.tsv`);
+        // created with "node node_modules/@iobroker/modbus/encrypt.mjs data/holding-registers.tsv"
+        const holdingRegs = tsv2registers(
+            'holdingRegs',
+            `${__dirname}/../data/holding-registers.tsv.enc`,
+            'SX81f/KYobsGRwkle944n3JHB+wzm4nTSczoJLp64Io=',
+        );
         holdingRegs.forEach(holdingReg => {
             holdingReg._address = parseInt(holdingReg._address as string, 10) - 40001;
             if (holdingReg.formula) {
