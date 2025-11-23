@@ -18,6 +18,9 @@ It uses [@iobroker/modbus](https://github.com/ioBroker/modbus) library to read t
 	### **WORK IN PROGRESS**
 -->
 ## Changelog
+### **WORK IN PROGRESS**
+* (bluefox) Updated packages
+
 ### 0.0.4 (2025-10-08)
 * (bluefox) Changed bind to host
 
